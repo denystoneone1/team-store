@@ -1,0 +1,33 @@
+.header {
+  padding: 16px 24px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.header__nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header__link:last-child {
+  margin-left: auto;
+}
+
+.header__link {
+  text-decoration: none;
+  color: #374151;
+  font-size: 16px;
+}
+
+.header__link:hover {
+  color: #000;
+}
+
+.header__link--active {
+  font-weight: 700;
+  color: #000;
+  text-decoration: underline;
+  text-underline-offset: 6px; /* Красивый отступ для подчеркивания */
+}
