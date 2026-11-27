@@ -19,14 +19,19 @@ export function createHeader(): HTMLElement {
     link.textContent = item.label;
     link.dataset.route = item.route;
     link.className = 'header__link';
+
     nav.append(link);
   });
 
   header.append(nav);
+
   return header;
 }
 
-export function updateActiveNav(header: HTMLElement, currentRoute: string): void {
+export function updateActiveNav(
+  header: HTMLElement,
+  currentRoute: string,
+): void {
   const links = header.querySelectorAll<HTMLAnchorElement>('.header__link');
 
   links.forEach((link) => {

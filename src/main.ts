@@ -1,4 +1,3 @@
-
 import './style.css';
 import { createHeader, updateActiveNav } from './ui/header';
 
@@ -22,17 +21,29 @@ function createSection(titleText: string): HTMLElement {
 
 function renderRoute(): void {
   const hash = window.location.hash || '#/about';
+  const [, route, id] = hash.split('/');
 
-  if (hash === '#/catalog') {
+  let activeRoute = '#/about';
+
+  if (route === 'catalog') {
     main.replaceChildren(createSection('Каталог'));
-  } else if (hash === '#/cart') {
+    activeRoute = '#/catalog';
+  } else if (route === 'cart') {
     main.replaceChildren(createSection('Корзина'));
+    activeRoute = '#/cart';
+  } else if (route === 'book' && id) {
+    const section = createSection('Страница книги');
+    section.dataset.bookId = id;
+
+    main.replaceChildren(section);
+    activeRoute = '#/catalog';
   } else {
     main.replaceChildren(createSection('О нас'));
   }
 
-  updateActiveNav(header, hash);
+  updateActiveNav(header, activeRoute);
 }
 
 window.addEventListener('hashchange', renderRoute);
+
 renderRoute();
